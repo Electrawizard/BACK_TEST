@@ -17,14 +17,14 @@ class Solution:
         self.roman_letters = self.roman_dict.keys()
 
     def romanToInt(self, roman_string: str) -> int:
+        result = 0
         int_numerals = self.int_letters(roman_string)
-        int_ = 0
         for i, num in enumerate(int_numerals):
             if i+1 == len(int_numerals) or num >= int_numerals[i+1]:
-                int_ += num
+                result += num
             else:
-                int_ -= num
-        return int_
+                result -= num
+        return result
 
     def int_letters(self, roman_string: str) -> List[int]:
         ints = []
@@ -41,6 +41,6 @@ if __name__ == '__main__':
     converter = Solution(roman_dict)
 
     roman = str(input("Enter a string - ")).upper()
-    int_str = converter.romanToInt(roman_string=roman)
+    result = converter.romanToInt(roman_string=roman)
 
-    print(int_str)
+    print(result)
